@@ -3,10 +3,19 @@ const { useEffect, useState, createContext, useContext } = React;
 const userContext = createContext();
 
 function Component1() {
-  const [user, setUser] = useState('Matheus')
+  const [user, setUser] = useState('')
 
   return (
     <userContext.Provider value={user}>
+      <input 
+        type="text"
+        placeholder="Insira seu nome"
+        value={user}
+        onChange={event => setUser(event.target.value)}
+       />
+       <button onClick={() => {setUser('')}}>
+         Limpar
+        </button>
       <h1>Component 1. Hello, {user}!</h1>
       <Component2 />
     </userContext.Provider>
